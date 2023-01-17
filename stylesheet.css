@@ -1,0 +1,12 @@
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+}
+
+.buttons button {
+    display: inherit;
+    height: 200px;
+    width: 200px;
+}

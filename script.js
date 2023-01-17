@@ -9,15 +9,15 @@ const contentWindow = document.querySelector('.contentWindow');
 
 btnRock.addEventListener('click', () => {
     playRound('rock');
-});
+})
 
 btnPaper.addEventListener('click', () => {
     playRound('paper');
-});
+})
 
 btnScissors.addEventListener('click', () => {
     playRound('scissors');
-});
+})
 
 function playRound(playerChoice){
     let computerChoice = choices[Math.floor(Math.random() * choices.length)];
@@ -32,7 +32,7 @@ function playRound(playerChoice){
     winner.textContent = checkWinner(opponentScore, playerScore);
 
     contentWindow.append(result, total, winner);
-};
+}
 
 function checkWinner(opponentScore, playerScore){
     if (opponentScore >= 5){
@@ -57,13 +57,13 @@ function gameRound(computerChoice, playerChoice){
         return(`Paper beats Rock! 5 points have been added! Your total score is ${playerScore}, opponent score is ${opponentScore}`);
     }
 
-    else if (computerChoice === "paper" && playerChoice === "scissors"){
+    if (computerChoice === "paper" && playerChoice === "scissors"){
         playerScore += 5;
         opponentScore -= 5;
         return(`Scissors beats Paper! 5 points have been added! Your total score is ${playerScore}, opponent score is ${opponentScore}`);
     }
 
-    else if (computerChoice === "scissors" && playerChoice === "rock"){
+    if (computerChoice === "scissors" && playerChoice === "rock"){
         playerScore += 5;
         opponentScore -= 5;
         return(`Rock beats Scissors! 5 points have been added! Your total score is ${playerScore}, opponent score is ${opponentScore}`);
@@ -91,4 +91,4 @@ function gameRound(computerChoice, playerChoice){
     else {
         return (`You both picked the same thing! No points added or taken! Your total score is ${playerScore}, opponent score is ${opponentScore}`)
     }
-};
+}
