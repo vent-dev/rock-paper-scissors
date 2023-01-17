@@ -5,7 +5,7 @@
     gap: 10px;
 }
 
-.buttons button {
+.button {
     display: inherit;
     height: 200px;
     width: 200px;

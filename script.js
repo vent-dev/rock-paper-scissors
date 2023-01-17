@@ -1,6 +1,7 @@
 let choices = ['rock', 'paper', 'scissors']
-let playerScore = 0;
-let opponentScore = 0;
+let resultMessage = '';
+let playerScore = 4;
+let computerScore = 0;
 
 const playerSelection = document.querySelectorAll('.button');
 const contentWindow = document.querySelector('.contentWindow');
@@ -15,24 +16,26 @@ function playRound(playerChoice){
     let computerChoice = choices[Math.floor(Math.random() * choices.length)];
 
     const result = document.createElement('p');
-    result.textContent = gameRound(computerChoice, playerChoice); 
 
-    const total = document.createElement('p');
-    total.textContent = `Your total score is ${playerScore}`;
+    gameRound(computerChoice, playerChoice);
 
-    const winner = document.createElement('p');
-    winner.textContent = checkWinner(opponentScore, playerScore);
+    result.textContent = resultMessage;
 
-    contentWindow.append(result, total, winner);
+    contentWindow.append(result);
+
+    return resultMessage;
 }
 
-function checkWinner(opponentScore, playerScore){
-    if (opponentScore >= 5){
-        return(`The opponent wins with a score of ${opponentScore} points! Sadly, you stayed at ${playerScore} points. Better luck next time!`);
+function checkWinner(PlayerScore, computerScore){
+    if (playerScore >= 5 && computerScore >= 5){
+        resultMessage = (`It's a tie! Better look next time! Your total is ${playerScore} and your opponents total is ${computerScore}.`);
     }
-    
-    else if (playerScore >= 5) {
-        return(`You win! Great job! Your score came to ${playerScore} points, while your opponent stayed at ${opponentScore} points!`);
+    else if (playerScore >= 5){
+        resultMessage = (`You have won! Congratulations! Your total is ${playerScore} while your opponent fell short with a total of ${computerScore}!`);
+    }
+
+    else if (computerScore >= 5){
+        resultMessage = (`You have lost! :( Your opponents total is ${computerScore} while you fell short with a measly total of ${playerScore}.`);
     }
 
     else {
@@ -42,45 +45,47 @@ function checkWinner(opponentScore, playerScore){
 
 function gameRound(computerChoice, playerChoice){
 
+    if (playerChoice === computerChoice) {
+        resultMessage =  (`You both picked the same thing! No points added or taken! Your total score is ${playerScore}, opponent score is ${computerScore}`);
+    }
+
     // win situations 
     if (computerChoice === "rock" && playerChoice === "paper"){
         playerScore ++;
-        opponentScore --;
-        return(`Paper beats Rock! Your total score is ${playerScore}, opponent score is ${opponentScore}`);
+        computerScore --;
+        resultMessage = (`Paper beats Rock! Your total score is ${playerScore}, opponent score is ${computerScore}`);
     }
 
-    if (computerChoice === "paper" && playerChoice === "scissors"){
-        playerScore ++;
-        opponentScore --;
-        return(`Scissors beats Paper! Your total score is ${playerScore}, opponent score is ${opponentScore}`);
+    else if (computerChoice === "paper" && playerChoice === "scissors"){
+       playerScore ++;
+        computerScore --;
+        resultMessage = (`Scissors beats Paper! Your total score is ${playerScore}, opponent score is ${computerScore}`);
     }
 
-    if (computerChoice === "scissors" && playerChoice === "rock"){
+    else if (computerChoice === "scissors" && playerChoice === "rock"){
         playerScore ++;
-        opponentScore --;
-        return(`Rock beats Scissors! Your total score is ${playerScore}, opponent score is ${opponentScore}`);
+        computerScore --;
+        resultMessage = (`Rock beats Scissors! Your total score is ${playerScore}, opponent score is ${computerScore}`);
     }
 
     // loss situations
-    else if (playerChoice === "rock" && computerChoice === "paper"){
+    if (playerChoice === "rock" && computerChoice === "paper"){
         playerScore --;
-        opponentScore ++;
-        return(`Paper beats Rock! Your total score is ${playerScore}, opponent score is ${opponentScore}`);
+        computerScore ++;
+        resultMessage = (`Paper beats Rock! Your total score is ${playerScore}, opponent score is ${computerScore}`);
     }
 
     else if (playerChoice === "paper" && computerChoice === "scissors"){
         playerScore --;
-        opponentScore ++;
-        return(`Scissors beats Paper! Your total score is ${playerScore}, opponent score is ${opponentScore}`);
+        computerScore ++;
+        resultMessage = (`Scissors beats Paper! Your total score is ${playerScore}, opponent score is ${computerScore}`);
     }
 
     else if (playerChoice === "scissors" && computerChoice === "rock"){
         playerScore --;
-        opponentScore ++;
-        return(`Rock beats Scissors! Your total score is ${playerScore}, opponent score is ${opponentScore}`);
+        computerScore ++;
+        resultMessage = (`Rock beats Scissors! Your total score is ${playerScore}, opponent score is ${computerScore}`);
     }
 
-    else {
-        return (`You both picked the same thing! No points added or taken! Your total score is ${playerScore}, opponent score is ${opponentScore}`)
-    }
+    checkWinner(playerScore, computerScore);
 }
