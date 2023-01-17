@@ -51,14 +51,12 @@ function gameRound(computerChoice, playerChoice){
 }
 
 function game(){
-    for (let i = 1; i <= 5; i++) {
-        let computerChoice = getComputerChoice();
-        let playerChoice = getPlayerChoice();
+    let computerChoice = getComputerChoice();
+    let playerChoice = getPlayerChoice();
 
-
-        console.log(`Round ${i}`)
-        console.log(gameRound(computerChoice, playerChoice));
-    }
+        
+    console.log(`Round ${i}`)
+    console.log(gameRound(computerChoice, playerChoice));
 
     console.log(`Game over! Your total score was ${playerScore}`);
 }
