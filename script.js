@@ -2,22 +2,14 @@ let choices = ['rock', 'paper', 'scissors']
 let playerScore = 0;
 let opponentScore = 0;
 
-const btnRock = document.querySelector('#btnRock');
-const btnPaper = document.querySelector('#btnPaper');
-const btnScissors = document.querySelector('#btnScissors');
+const playerSelection = document.querySelectorAll('.button');
 const contentWindow = document.querySelector('.contentWindow');
 
-btnRock.addEventListener('click', () => {
-    playRound('rock');
-})
-
-btnPaper.addEventListener('click', () => {
-    playRound('paper');
-})
-
-btnScissors.addEventListener('click', () => {
-    playRound('scissors');
-})
+playerSelection.forEach(selection => {
+    selection.addEventListener('click', element => {
+        playRound(element.target.alt);
+    })
+});
 
 function playRound(playerChoice){
     let computerChoice = choices[Math.floor(Math.random() * choices.length)];
@@ -52,40 +44,40 @@ function gameRound(computerChoice, playerChoice){
 
     // win situations 
     if (computerChoice === "rock" && playerChoice === "paper"){
-        playerScore += 5;
-        opponentScore -= 5;
-        return(`Paper beats Rock! 5 points have been added! Your total score is ${playerScore}, opponent score is ${opponentScore}`);
+        playerScore ++;
+        opponentScore --;
+        return(`Paper beats Rock! Your total score is ${playerScore}, opponent score is ${opponentScore}`);
     }
 
     if (computerChoice === "paper" && playerChoice === "scissors"){
-        playerScore += 5;
-        opponentScore -= 5;
-        return(`Scissors beats Paper! 5 points have been added! Your total score is ${playerScore}, opponent score is ${opponentScore}`);
+        playerScore ++;
+        opponentScore --;
+        return(`Scissors beats Paper! Your total score is ${playerScore}, opponent score is ${opponentScore}`);
     }
 
     if (computerChoice === "scissors" && playerChoice === "rock"){
-        playerScore += 5;
-        opponentScore -= 5;
-        return(`Rock beats Scissors! 5 points have been added! Your total score is ${playerScore}, opponent score is ${opponentScore}`);
+        playerScore ++;
+        opponentScore --;
+        return(`Rock beats Scissors! Your total score is ${playerScore}, opponent score is ${opponentScore}`);
     }
 
     // loss situations
     else if (playerChoice === "rock" && computerChoice === "paper"){
-        playerScore -= 5;
-        opponentScore += 5;
-        return(`Paper beats Rock! 5 points have been taken! Your total score is ${playerScore}, opponent score is ${opponentScore}`);
+        playerScore --;
+        opponentScore ++;
+        return(`Paper beats Rock! Your total score is ${playerScore}, opponent score is ${opponentScore}`);
     }
 
     else if (playerChoice === "paper" && computerChoice === "scissors"){
-        playerScore -= 5;
-        opponentScore += 5;
-        return(`Scissors beats Paper! 5 points have been taken! Your total score is ${playerScore}, opponent score is ${opponentScore}`);
+        playerScore --;
+        opponentScore ++;
+        return(`Scissors beats Paper! Your total score is ${playerScore}, opponent score is ${opponentScore}`);
     }
 
     else if (playerChoice === "scissors" && computerChoice === "rock"){
-        playerScore -= 5;
-        opponentScore += 5;
-        return(`Rock beats Scissors! 5 points have been taken! Your total score is ${playerScore}, opponent score is ${opponentScore}`);
+        playerScore --;
+        opponentScore ++;
+        return(`Rock beats Scissors! Your total score is ${playerScore}, opponent score is ${opponentScore}`);
     }
 
     else {
