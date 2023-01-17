@@ -4,6 +4,7 @@ let playerScore = 0;
 const btnRock = document.querySelector('#btnRock');
 const btnPaper = document.querySelector('#btnPaper');
 const btnScissors = document.querySelector('#btnScissors');
+const contentWindow = document.querySelector('.contentWindow');
 
 btnRock.addEventListener('click', () => {
     playRound('rock');
@@ -20,8 +21,13 @@ btnScissors.addEventListener('click', () => {
 function playRound(playerChoice){
     let computerChoice = choices[Math.floor(Math.random() * choices.length)];
 
-    console.log(gameRound(computerChoice, playerChoice));
-    console.log(`Game over! Your total score was ${playerScore}`);
+    const result = document.createElement('p');
+    result.textContent = gameRound(computerChoice, playerChoice); 
+
+    const total = document.createElement('p');
+    total.textContent = `Game over! Your total score was ${playerScore}`;
+
+    contentWindow.append(result, total);
 };
 
 function gameRound(computerChoice, playerChoice){
