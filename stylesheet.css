@@ -1,3 +1,8 @@
+* {
+    background-color: black;
+    color: white;
+}
+
 .buttons {
     display: flex;
     flex-direction: row;
@@ -9,4 +14,9 @@
     display: inherit;
     height: 200px;
     width: 200px;
+}
+
+.result {
+    display: flex;
+    justify-content: center;
 }
