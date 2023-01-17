@@ -1,15 +1,28 @@
 let choices = ['rock', 'paper', 'scissors']
 let playerScore = 0;
 
-function getComputerChoice(){
-    let computerChoice = Math.floor(Math.random() * choices.length);
-    return computerChoice = choices[computerChoice];
-}
+const btnRock = document.querySelector('#btnRock');
+const btnPaper = document.querySelector('#btnPaper');
+const btnScissors = document.querySelector('#btnScissors');
 
-function getPlayerChoice(){
-    let playerChoice = prompt("Rock, Paper, Scissors?");
-    return playerChoice = playerChoice.toLowerCase();
-}
+btnRock.addEventListener('click', () => {
+    playRound('rock');
+});
+
+btnPaper.addEventListener('click', () => {
+    playRound('paper');
+});
+
+btnScissors.addEventListener('click', () => {
+    playRound('scissors');
+});
+
+function playRound(playerChoice){
+    let computerChoice = choices[Math.floor(Math.random() * choices.length)];
+
+    console.log(gameRound(computerChoice, playerChoice));
+    console.log(`Game over! Your total score was ${playerScore}`);
+};
 
 function gameRound(computerChoice, playerChoice){
 
@@ -48,17 +61,4 @@ function gameRound(computerChoice, playerChoice){
     else {
         return (`You both picked the same thing! It's a tie! No points added or taken! Your total score is ${playerScore}`)
     }
-}
-
-function game(){
-    let computerChoice = getComputerChoice();
-    let playerChoice = getPlayerChoice();
-
-        
-    console.log(`Round ${i}`)
-    console.log(gameRound(computerChoice, playerChoice));
-
-    console.log(`Game over! Your total score was ${playerScore}`);
-}
-
-game();
+};
