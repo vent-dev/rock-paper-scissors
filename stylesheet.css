@@ -1,7 +1,20 @@
-* {
+body {
     background-color: black;
     color: white;
-    width: 100%;
+}
+
+.gameScores {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.window {
+    display: inherit;
+    padding: 10rem;
+    background-color: white;
+    color: black;
+    font-size:inherit
 }
 
 .buttons {
@@ -9,17 +22,14 @@
     flex-direction: row;
     justify-content: center;
     gap: 10px;
-    flex: 1;
 }
 
-.button {
-    display: inherit;
-    height: 200px;
-    width: 200px;
+.button, img {
+    max-width: 15rem;
+    border: 0;
 }
 
 .result {
     display: flex;
     justify-content: center;
-    flex: auto;
 }
