@@ -25,45 +25,45 @@ function playRound(playerChoice){
 function gameRound(computerChoice, playerChoice){
 
     if (playerChoice === computerChoice) {
-        result.textContent = (`You both picked the same thing! No points added or taken! Your total score is ${playerScore}, opponent score is ${computerScore}`);
+        result.textContent = (`You both picked the same thing!`);
     }
 
     // win situations 
     if (computerChoice === "rock" && playerChoice === "paper"){
         playerScore ++;
         playerTotal.textContent = playerScore;
-        result.textContent = (`Paper beats Rock! Your total score is ${playerScore}, opponent score is ${computerScore}`);
+        result.textContent = (`Paper beats Rock!`);
     }
 
     else if (computerChoice === "paper" && playerChoice === "scissors"){
         playerScore ++;
         playerTotal.textContent = playerScore;
-        result.textContent = (`Scissors beats Paper! Your total score is ${playerScore}, opponent score is ${computerScore}`);
+        result.textContent = (`Scissors beats Paper!`);
     }
 
     else if (computerChoice === "scissors" && playerChoice === "rock"){
         playerScore ++;
         playerTotal.textContent = playerScore;
-        result.textContent = (`Rock beats Scissors! Your total score is ${playerScore}, opponent score is ${computerScore}`);
+        result.textContent = (`Rock beats Scissors!`);
     }
 
     // loss situations
     if (playerChoice === "rock" && computerChoice === "paper"){
         computerScore ++;
         computerTotal.textContent = computerScore;
-        result.textContent = (`Paper beats Rock! Your total score is ${playerScore}, opponent score is ${computerScore}`);
+        result.textContent = (`Paper beats Rock!`);
     }
 
     else if (playerChoice === "paper" && computerChoice === "scissors"){
         computerScore ++;
         computerTotal.textContent = computerScore;
-        result.textContent = (`Scissors beats Paper! Your total score is ${playerScore}, opponent score is ${computerScore}`);
+        result.textContent = (`Scissors beats Paper!`);
     }
 
     else if (playerChoice === "scissors" && computerChoice === "rock"){
         computerScore ++;
         computerTotal.textContent = computerScore;
-        result.textContent = (`Rock beats Scissors! Your total score is ${playerScore}, opponent score is ${computerScore}`);
+        result.textContent = (`Rock beats Scissors!`);
     }
 
     checkWinner();
