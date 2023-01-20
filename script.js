@@ -71,12 +71,14 @@ function gameRound(computerChoice, playerChoice){
 
 function checkWinner(){
     if (computerScore >= 5){
-        result.textContent = (`You lose with a total score of ${playerScore} while your opponent won with a score of ${computerScore}!`);
+        result.textContent = (`You lose!`);
+        result.style.color = 'red';
         restart();
     }
 
     else if (playerScore >= 5){
-        result.textContent = (`You win with a total score of ${playerScore} while your opponent fell short with a score of ${computerScore}!`);
+        result.textContent = (`You win!`);
+        result.style.color = 'green';
         restart();
     }
 }
